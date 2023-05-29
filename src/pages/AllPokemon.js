@@ -1,4 +1,3 @@
-
 import SinglePokemon from "../components/SinglePokemon";
 import Filter from "../components/Filter";
 import Search from "../components/Search";
@@ -18,7 +17,7 @@ export default function AllPokemon({ pokemondb }) {
         )}
       </div>
 
-import React from "react";
+{/* import React from "react";
 import SinglePokemon from "../components/SinglePokemon";
 
 export default function AllPokemon({ pokemondb }) {
@@ -32,7 +31,7 @@ export default function AllPokemon({ pokemondb }) {
         ))
       ) : (
         <h1>No Pokemon Found</h1>
-      )}
+      )} */}
 
     </>
   );
