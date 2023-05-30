@@ -1,6 +1,8 @@
-import SinglePokemon from "../components/SinglePokemon"; 
-import { useState } from "react";
+import React, { useState } from "react";
+import SinglePokemon from "../components/SinglePokemon";
+import Filter from "../components/Filter";
 import Search from "../components/Search";
+import Pagination from "../components/Pagination";
 
 export default function AllPokemon({ pokemondb }) {
   const [inputValue, setInputValue] = useState("");
@@ -15,6 +17,29 @@ export default function AllPokemon({ pokemondb }) {
     setFilteredPokemon(filteredResults);
   };
 
+    const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+  const totalPages = Math.ceil(pokemondb.length / itemsPerPage);
+
+  const onPageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const onNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const onPrevPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const renderPokemon = () => {
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const currentItems = pokemondb.slice(indexOfFirstItem, indexOfLastItem);
+
+
+  
   return (
     <div>
       <form>
@@ -36,7 +61,18 @@ export default function AllPokemon({ pokemondb }) {
         ) : (
           <h1>No Pokemon Found</h1>
         )}
-      </div>
-    </div>
+        </div>
+
+
+      {renderPokemon()}
+
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={onPageChange}
+        onNextPage={onNextPage}
+        onPrevPage={onPrevPage}
+      />
+     </div>
   );
 }
