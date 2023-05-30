@@ -1,3 +1,28 @@
+import React from "react";
+
+export default function Search({ inputValue, onInputChange, onSearch }) {
+  return (
+    <form>
+      <input
+        className="searchBar"
+        value={inputValue}
+        onChange={onInputChange}
+        type="text"
+        placeholder="Search..."
+      />
+      <button onClick={onSearch}>Search</button>
+    </form>
+  );
+}
+
+
+
+
+
+
+
+
+
 // import { useState } from "react";
 
 // export default function Search({ pokemondb }) {
