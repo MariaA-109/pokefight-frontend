@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import UilReact from "@iconscout/react-unicons/icons/uil-react";
+// import UilReact from "@iconscout/react-unicons/icons/uil-react";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -8,6 +8,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AllPokemon from "./pages/AllPokemon";
 import Home from "./pages/Home";
+
+import PokemonDetails from "./pages/PokemonDetail";
+import Highscore from "./pages/Highscore";
+import Arena from "./pages/Arena";
 
 function App() {
   const [pokemon, setPokemon] = useState([]); // Rename state variable
@@ -36,6 +40,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -43,9 +48,10 @@ function App() {
               path="allpokemon"
               element={<AllPokemon pokemondb={pokemon} />}
             />
+            <Route path="highscore" element={<Highscore />} />
+            <Route path="allpokemon/:id" element={<PokemonDetails />} />
+            <Route path="arena" element={<Arena />} />
           </Routes>
-
-          <img src={logo} className="App-logo" alt="logo" />
         </main>
       </header>
     </div>

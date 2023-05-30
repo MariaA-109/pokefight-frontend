@@ -1,21 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { UilStar } from "@iconscout/react-unicons";
+// import { UilStar } from "@iconscout/react-unicons";
 
 export default function SinglePokemon({ item }) {
-  //console.log("Page: SinglePokemon:", item, pokedata);
+  // //console.log("Page: SinglePokemon:", item, pokedata);
   return (
     <div>
       <>
         <Link>
           <div className="m-3 border p-3 rounded-md w-52 " key={item.id}>
             <p className="text-sm lowercase font-bold">{item.name.english}</p>
-            <div className="flex flex-row my-1.5 justify-around items-center">
+            <div className="flex flex-row flex-wrap my-1.5 justify-around items-center">
               {item.type.map((type) => {
                 //console.log("type:", type);
                 return (
                   <div>
-                    <p className="text-xs border text-white mx-0.5 bg-orange-300 border-none w-20 rounded-full">
+                    <p className=" mt-1 text-xs border text-white mx-0.5 bg-orange-300 border-none w-20 rounded-full">
                       {type}
                     </p>
                   </div>
