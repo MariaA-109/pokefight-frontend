@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // import { UilStar } from "@iconscout/react-unicons";
 
 export default function SinglePokemon({ item }) {
-  console.log("Page: SinglePokemon:", item);
+  // console.log("Page: SinglePokemon:", item);
   return (
     <div>
       <>
