@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import UilReact from "@iconscout/react-unicons/icons/uil-react";
-
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -9,10 +8,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AllPokemon from "./pages/AllPokemon";
 import Home from "./pages/Home";
-import SinglePokemon from "./components/SinglePokemon";
 
 function App() {
   const [pokemon, setPokemon] = useState([]); // Rename state variable
+
   // const { pathname } = useLocation();
 
   useEffect(() => {
@@ -25,7 +24,6 @@ function App() {
         console.error(error);
       }
     }
-
     fetchPokemon(); // Call asynchronous function
   }, []);
 
@@ -33,7 +31,8 @@ function App() {
   //   window.scrollTo(0, 0);
   // }, [pathname]);
 
-  console.log(pokemon);
+  console.log("pokemon:", pokemon);
+
   return (
     <div className="App">
       <header className="App-header">

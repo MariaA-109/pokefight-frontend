@@ -3,19 +3,12 @@ import { Link } from "react-router-dom";
 import { UilStar } from "@iconscout/react-unicons";
 
 export default function SinglePokemon({ item }) {
-  console.log("Page: SinglePokemon:", item);
+  //console.log("Page: SinglePokemon:", item, pokedata);
   return (
     <div>
       <>
         <Link>
-          <div className=" m-3 border p-3 rounded-md" key={item.id}>
-            <div className="flex justify-center">
-              <img
-                src="https://images.secretlab.co/theme/common/collab_pokemon_catalog_charizard-min.png"
-                className="w-28 align-middle my-0.5 py-1.5"
-                alt=""
-              ></img>
-            </div>
+          <div className="m-3 border p-3 rounded-md w-52 " key={item.id}>
             <p className="text-sm lowercase font-bold">{item.name.english}</p>
             <div className="flex flex-row my-1.5 justify-around items-center">
               {item.type.map((type) => {
