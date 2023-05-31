@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-// import UilReact from "@iconscout/react-unicons/icons/uil-react";
+import UilReact from "@iconscout/react-unicons/icons/uil-react";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -9,7 +9,7 @@ import axios from "axios";
 import AllPokemon from "./pages/AllPokemon";
 import Home from "./pages/Home";
 
-import PokemonDetails from "./pages/PokemonDetail";
+import PokemonDetail from "./pages/PokemonDetail";
 import Highscore from "./pages/Highscore";
 import Arena from "./pages/Arena";
 
@@ -49,7 +49,10 @@ function App() {
               element={<AllPokemon pokemondb={pokemon} />}
             />
             <Route path="highscore" element={<Highscore />} />
-            <Route path="allpokemon/:id" element={<PokemonDetails />} />
+            <Route
+              path="pokemon/:pokeId"
+              element={<PokemonDetail pokemondb={pokemon} />}
+            />
             <Route path="arena" element={<Arena />} />
           </Routes>
         </main>
