@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-// import UilReact from "@iconscout/react-unicons/icons/uil-react";
-
+import UilReact from "@iconscout/react-unicons/icons/uil-react";
 import logo from "./logo.svg";
 import "./App.css";
 
@@ -10,14 +9,13 @@ import axios from "axios";
 import AllPokemon from "./pages/AllPokemon";
 import Home from "./pages/Home";
 
-import SinglePokemon from "./components/SinglePokemon";
-
-import PokemonDetails from "./pages/PokemonDetail";
+import PokemonDetail from "./pages/PokemonDetail";
 import Highscore from "./pages/Highscore";
 import Arena from "./pages/Arena";
 
 function App() {
   const [pokemon, setPokemon] = useState([]); // Rename state variable
+
   // const { pathname } = useLocation();
 
   useEffect(() => {
@@ -30,7 +28,6 @@ function App() {
         console.error(error);
       }
     }
-
     fetchPokemon(); // Call asynchronous function
   }, []);
 
@@ -38,7 +35,8 @@ function App() {
   //   window.scrollTo(0, 0);
   // }, [pathname]);
 
-  console.log(pokemon);
+  console.log("pokemon:", pokemon);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -51,7 +49,10 @@ function App() {
               element={<AllPokemon pokemondb={pokemon} />}
             />
             <Route path="highscore" element={<Highscore />} />
-            <Route path="allpokemon/:id" element={<PokemonDetails />} />
+            <Route
+              path="pokemon/:pokeId"
+              element={<PokemonDetail pokemondb={pokemon} />}
+            />
             <Route path="arena" element={<Arena />} />
           </Routes>
         </main>

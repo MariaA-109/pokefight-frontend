@@ -58,7 +58,7 @@ export default function AllPokemon({ pokemondb }) {
         <div className="grid grid-cols-3 justify-center mx-1 my-1">
           {currentItems.length > 0 ? (
             currentItems.map((item) => (
-              <SinglePokemon item={item} key={item.id} />
+              <SinglePokemon item={item} key={item.id} singlePokemon={item} />
             ))
           ) : (
             <h1>No Pokemon Found</h1>
@@ -78,23 +78,6 @@ export default function AllPokemon({ pokemondb }) {
 
   return renderPokemon();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useState, useEffect } from "react";
 // import SinglePokemon from "../components/SinglePokemon";
