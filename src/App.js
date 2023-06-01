@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import UilReact from "@iconscout/react-unicons/icons/uil-react";
+// import UilReact from "@iconscout/react-unicons/icons/uil-react";
 import logo from "./logo.svg";
 import "./App.css";
 

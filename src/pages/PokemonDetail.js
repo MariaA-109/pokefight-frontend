@@ -3,16 +3,6 @@ import React from "react";
 import { UilStar } from "@iconscout/react-unicons";
 
 function PokemonDetail({ pokemondb }) {
-<<<<<<< HEAD
-  console.log("pokemondb", pokemondb);
-  const { pokeID } = useParams();
-  const singlePokemon = pokemondb.find((item) => item.id == pokeID);
-
-  return (
-    <div>
-      <h3>{singlePokemon.name}</h3>
-      <p>{singlePokemon.type}</p>
-=======
   //console.log("pokemondb", pokemondb);
   const { pokeId } = useParams();
   const singlePokemon = pokemondb.find((item) => item.id === parseInt(pokeId));
@@ -50,7 +40,6 @@ function PokemonDetail({ pokemondb }) {
           <UilStar size={50} />
         </div>
       </div>
->>>>>>> 40ffba38f425ac39e2d3016ec41b9a8ca4bd45b4
     </div>
   );
 }
