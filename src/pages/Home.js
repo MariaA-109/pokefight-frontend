@@ -2,10 +2,10 @@
 // import { Link } from "react-router-dom";
 // // import { useState, useEffect } from "react";
 
-// import "../css/home.css";
-// // import img1 from "../img/pokemon.png";
-// // import img2 from "../img/glurak.png";
-// // import sound from "../img/Opening.mp3";
+import "../css/home.css";
+import img1 from "../img/pokemon.png";
+import img2 from "../img/glurak.png";
+import sound from "../img/Opening.mp3";
 
 // function play() {
 //   new Audio(sound).play();
