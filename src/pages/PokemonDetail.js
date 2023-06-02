@@ -2,10 +2,12 @@ import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { UilStar } from "@iconscout/react-unicons";
+import { Link } from "react-router-dom";
 
 function PokemonDetail() {
   const { pokeId } = useParams();
   const [pokemonData, setPokemonData] = useState(null);
+  const [data, setData] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,7 +33,14 @@ function PokemonDetail() {
 
   return (
     <div>
-      <div>
+      <div className="flex justify-center">
+        <div>
+          <Link to="../allpokemon/">
+            <button className="bg-rose-500 text-white text-sm p-3 font-bold">
+              Back
+            </button>
+          </Link>
+        </div>
         <p className="text-xxl lowercase font-bold p-4">
           {pokemonData.name.english || pokemonData.name}
         </p>
@@ -69,8 +78,22 @@ function PokemonDetail() {
             Speed: {pokemonData.stats[5].base_stat}
           </p>
         </div>
-        <div className="flex justify-center align-middle py-1">
-          <UilStar size={50} />
+        <div className="flex flex-wrap justify-center ml-8">
+          <button
+            onClick={() =>
+              setData(
+                "I choose you, " +
+                  (pokemonData.name.english || pokemonData.name) +
+                  "!"
+              )
+            }
+          >
+            <UilStar
+              size={50}
+              className="text-white cursor-pointer transition ease-out hover:scale-125"
+            />
+          </button>
+          <p className=" text-xl m-4">{data}</p>
         </div>
       </div>
     </div>
