@@ -31,69 +31,128 @@ function PokemonDetail() {
 
   console.log("pokemonData", pokemonData);
 
+  const calculatePercentage = (stat) => {
+    return (stat / 100) * 100;
+  };
+
   return (
     <div>
-      <div className="flex justify-center">
-        <div>
+      <div className="flex">
+        <div className="flex-col justify-center ">
           <Link to="../allpokemon/">
             <button className="bg-rose-500 text-white text-sm p-3 font-bold">
               Back
             </button>
           </Link>
         </div>
-        <p className="text-xxl lowercase font-bold p-4">
-          {pokemonData.name.english || pokemonData.name}
-        </p>
-        {pokemonData.sprites && (
-          <div>
-            <img
-              src={pokemonData.sprites.other.dream_world.front_default}
-              alt="Sprite"
-            />
+        <div className="max-w-sm rounded overflow-hidden px-5 py-5 m-8 w-1/2 sm:w-auto md:w-full lg:w-32 xl:w-3/4">
+          <p className="text-xxl lowercase font-bold p-4">
+            {pokemonData.name.english || pokemonData.name}
+          </p>
+          {pokemonData.sprites && (
+            <div className="flex justify-center">
+              <img
+                src={pokemonData.sprites.other.dream_world.front_default}
+                alt="Sprite"
+              />
+            </div>
+          )}
+          <div className="flex flex-row flex-wrap my-1.5 justify-around items-center p-4">
+            {pokemonData.types.map((type, index) => {
+              console.log("type:", type);
+              return (
+                <div key={index}>
+                  <p className="p-0.5 mt-1 text-xs border text-white mx-4 bg-orange-300 border-none w-20 rounded-full">
+                    {type.type.name}
+                  </p>
+                </div>
+              );
+            })}
           </div>
-        )}
-        <div className="flex flex-row flex-wrap my-1.5 justify-around items-center p-4">
-          {pokemonData.types.map((type, index) => {
-            console.log("type:", type);
-            return (
-              <div key={index}>
-                <p className="p-0.5 mt-1 text-xs border text-white mx-4 bg-orange-300 border-none w-20 rounded-full">
-                  {type.type.name}
-                </p>
+          <div class="w-full">
+            <div className="my-1.5 p-7">
+              <p className="text-lg font-bold py-2">Base Stats</p>
+              <p className="text-base m-2">
+                HP: {pokemonData.stats[0].base_stat}
+              </p>
+              <div className="relative pt-1">
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200">
+                  <div
+                    style={{
+                      width: `${calculatePercentage(
+                        pokemonData.stats[0].base_stat
+                      )}%`,
+                    }}
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                  ></div>
+                </div>
               </div>
-            );
-          })}
-        </div>
-
-        <div className="my-1.5 p-7">
-          <p className="text-lg font-bold py-2">Base Stats</p>
-          <p className="text-base m-2">HP: {pokemonData.stats[0].base_stat}</p>
-          <p className="text-base m-2">
-            Attack: {pokemonData.stats[1].base_stat}
-          </p>
-          <p className="text-base m-2">
-            Defense: {pokemonData.stats[2].base_stat}
-          </p>
-          <p className="text-base m-2">
-            Speed: {pokemonData.stats[5].base_stat}
-          </p>
-        </div>
-        <div className="flex flex-wrap justify-center ml-8">
-          <button
-            onClick={() =>
-              setData(
-                "I choose you, " +
-                  (pokemonData.name.english || pokemonData.name) +
-                  "!"
-              )
-            }
-          >
-            <UilStar
-              size={50}
-              className="text-white cursor-pointer transition ease-out hover:scale-125"
-            />
-          </button>
-          <p className=" text-xl m-4">{data}</p>
+              <p className="text-base m-2">
+                Attack: {pokemonData.stats[1].base_stat}
+              </p>
+              <div className="relative pt-1">
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200">
+                  <div
+                    style={{
+                      width: `${calculatePercentage(
+                        pokemonData.stats[1].base_stat
+                      )}%`,
+                    }}
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                  ></div>
+                </div>
+              </div>
+              <p className="text-base m-2">
+                Defense: {pokemonData.stats[2].base_stat}
+              </p>
+              <div className="relative pt-1">
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200">
+                  <div
+                    style={{
+                      width: `${calculatePercentage(
+                        pokemonData.stats[2].base_stat
+                      )}%`,
+                    }}
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                  ></div>
+                </div>
+              </div>
+              <p className="text-base m-2">
+                Speed: {pokemonData.stats[5].base_stat}
+              </p>
+              <div className="relative pt-1">
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200">
+                  <div
+                    style={{
+                      width: `${calculatePercentage(
+                        pokemonData.stats[5].base_stat
+                      )}%`,
+                    }}
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div className="flex-row justify-items-center">
+              <button
+                onClick={() =>
+                  setData(
+                    "I choose you, " +
+                      (pokemonData.name.english || pokemonData.name) +
+                      "!"
+                  )
+                }
+              >
+                <UilStar
+                  size={50}
+                  className="text-white cursor-pointer transition ease-out hover:scale-125"
+                />
+              </button>
+              <p className="flex-row justify-items-center text-xl m-4">
+                {data}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
