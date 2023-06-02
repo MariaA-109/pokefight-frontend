@@ -1,25 +1,55 @@
 import { useParams } from "react-router-dom";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { UilStar } from "@iconscout/react-unicons";
 
-function PokemonDetail({ pokemondb }) {
-  //console.log("pokemondb", pokemondb);
+function PokemonDetail() {
   const { pokeId } = useParams();
-  const singlePokemon = pokemondb.find((item) => item.id === parseInt(pokeId));
-  console.log("singlePokemon", singlePokemon.type);
+  const [pokemonData, setPokemonData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://pokeapi.co/api/v2/pokemon/${pokeId}`
+        );
+        setPokemonData(response.data);
+      } catch (error) {
+        console.log("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [pokeId]);
+
+  if (!pokemonData) {
+    // Add a loading state or return null while the data is loading
+    return null;
+  }
+
+  console.log("pokemonData", pokemonData);
+
   return (
     <div>
       <div>
         <p className="text-xxl lowercase font-bold p-4">
-          {singlePokemon.name.english}
+          {pokemonData.name.english || pokemonData.name}
         </p>
+        {pokemonData.sprites && (
+          <div>
+            <img
+              src={pokemonData.sprites.other.dream_world.front_default}
+              alt="Sprite"
+            />
+          </div>
+        )}
         <div className="flex flex-row flex-wrap my-1.5 justify-around items-center p-4">
-          {singlePokemon.type.map((type) => {
+          {pokemonData.types.map((type, index) => {
             console.log("type:", type);
             return (
-              <div>
-                <p className=" p-0.5 mt-1 text-xs border text-white mx-4 bg-orange-300 border-none w-20 rounded-full">
-                  {type}
+              <div key={index}>
+                <p className="p-0.5 mt-1 text-xs border text-white mx-4 bg-orange-300 border-none w-20 rounded-full">
+                  {type.type.name}
                 </p>
               </div>
             );
@@ -28,13 +58,16 @@ function PokemonDetail({ pokemondb }) {
 
         <div className="my-1.5 p-7">
           <p className="text-lg font-bold py-2">Base Stats</p>
-          <p className="text-base m-2 ">HP: {singlePokemon.base.HP}</p>
-          <p className="text-base m-2 "> Attack: {singlePokemon.base.Attack}</p>
+          <p className="text-base m-2">HP: {pokemonData.stats[0].base_stat}</p>
           <p className="text-base m-2">
-            {" "}
-            Defense: {singlePokemon.base.Defense}
+            Attack: {pokemonData.stats[1].base_stat}
           </p>
-          <p className="text-base m-2"> Speed: {singlePokemon.base.Speed}</p>
+          <p className="text-base m-2">
+            Defense: {pokemonData.stats[2].base_stat}
+          </p>
+          <p className="text-base m-2">
+            Speed: {pokemonData.stats[5].base_stat}
+          </p>
         </div>
         <div className="flex justify-center align-middle py-1">
           <UilStar size={50} />
