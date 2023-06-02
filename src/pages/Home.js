@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
-// import { useState, useEffect } from "react";
 
 import "../css/home.css";
 import img1 from "../img/pokemon.png";
 import img2 from "../img/glurak.png";
 import sound from "../img/Opening.mp3";
 
-function play() {
-  new Audio(sound).play();
-}
-
 export default function Home() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <>
       <div className="wrapper">
@@ -27,10 +35,17 @@ export default function Home() {
             </div>
 
             <div className="button-container">
-              <Link onClick={play} to="/allpokemon" className="button"></Link>
+              <Link to="/allpokemon" className="button"></Link>
             </div>
           </div>
-          <div className="white-section"></div>
+          <div className="white-section">
+            <div className="music-toggle-container text-zinc-600">
+              <button onClick={togglePlay} className="music-toggle-button">
+                {isPlaying ? "Pause Music" : "Play Music"}
+              </button>
+            </div>
+            <audio ref={audioRef} src={sound} />
+          </div>
         </div>
       </div>
     </>

@@ -17,9 +17,11 @@ export default function AllPokemon({ pokemondb }) {
   const handleSearch = (event) => {
     event.preventDefault();
 
-    const filteredResults = pokemondb.filter((item) =>
-      item.name.english.toLowerCase().includes(inputValue.toLowerCase())
-    );
+    const filteredResults = pokemondb.filter((item) => {
+      const englishName = item.name.english || item.name || "";
+      return englishName.toLowerCase().includes(inputValue.toLowerCase());
+    });
+
     setFilteredPokemon(filteredResults);
   };
 
@@ -57,8 +59,8 @@ export default function AllPokemon({ pokemondb }) {
 
         <div className="grid grid-cols-3 justify-center mx-1 my-1">
           {currentItems.length > 0 ? (
-            currentItems.map((item) => (
-              <SinglePokemon item={item} key={item.id} singlePokemon={item} />
+            currentItems.map((pokemondb) => (
+              <SinglePokemon pokemondb={pokemondb} key={pokemondb.id} />
             ))
           ) : (
             <h1>No Pokemon Found</h1>

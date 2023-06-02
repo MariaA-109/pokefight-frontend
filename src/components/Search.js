@@ -4,7 +4,7 @@ export default function Search({ inputValue, onInputChange, onSearch }) {
   return (
     <form>
       <input
-        className="searchBar"
+        className="searchBar text-gray-800"
         value={inputValue}
         onChange={onInputChange}
         type="text"
@@ -14,14 +14,6 @@ export default function Search({ inputValue, onInputChange, onSearch }) {
     </form>
   );
 }
-
-
-
-
-
-
-
-
 
 // import { useState } from "react";
 
@@ -51,40 +43,6 @@ export default function Search({ inputValue, onInputChange, onSearch }) {
 //   </form>
 //   );
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { useState } from "react";
 
@@ -117,8 +75,8 @@ export default function Search({ inputValue, onInputChange, onSearch }) {
 //       <ul>
 //         {pokemondb
 //         .filter((singlePokemon) =>{
-//           return inputValue.toLowerCase() === '' 
-//           ? singlePokemon.name.english 
+//           return inputValue.toLowerCase() === ''
+//           ? singlePokemon.name.english
 //           : singlePokemon.name.english.toLowerCase().includes(inputValue)
 //           })
 //           .map((singlePokemon) => (
