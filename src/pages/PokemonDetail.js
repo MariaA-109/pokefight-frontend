@@ -38,9 +38,9 @@ function PokemonDetail() {
   return (
     <div>
       <div className="flex">
-        <div className="flex-col justify-center ">
+        <div className="flex-col  justify-center ">
           <Link to="../allpokemon/">
-            <button className="bg-rose-500 text-white text-sm p-3 font-bold">
+            <button className="bg-rose-500 rounded-sm text-white text-sm p-3 font-bold">
               Back
             </button>
           </Link>

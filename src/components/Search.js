@@ -3,14 +3,21 @@ import React from "react";
 export default function Search({ inputValue, onInputChange, onSearch }) {
   return (
     <form>
-      <input
-        className="searchBar text-gray-800"
-        value={inputValue}
-        onChange={onInputChange}
-        type="text"
-        placeholder="Search..."
-      />
-      <button onClick={onSearch}>Search</button>
+      <div className="flex justify-end m-5 space-x-2">
+        <input
+          className="text-gray-800 rounded-sm p-1 text-lg"
+          value={inputValue}
+          onChange={onInputChange}
+          type="text"
+          placeholder="Search..."
+        />
+        <button
+          onClick={onSearch}
+          className="bg-rose-500 rounded-sm  text-white text-xl p-3 font-bold"
+        >
+          Search
+        </button>
+      </div>
     </form>
   );
 }

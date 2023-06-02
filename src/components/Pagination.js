@@ -37,7 +37,7 @@ const Pagination = ({
           <li
             key={number}
             className={`px-4 py-1 ${
-              currentPage === number ? "bg-rose-500 text-white" : ""
+              currentPage === number ? "bg-rose-500 rounded-sm text-white" : ""
             }`}
           >
             <button onClick={() => onPageChange(number)}>{number}</button>
