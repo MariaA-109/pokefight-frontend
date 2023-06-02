@@ -37,15 +37,15 @@ function PokemonDetail() {
 
   return (
     <div>
-      <div className="flex">
-        <div className="flex-col  justify-center ">
+      <div className="flex ">
+        <div className="flex-col justify-center ">
           <Link to="../allpokemon/">
             <button className="bg-rose-500 rounded-sm text-white text-sm p-3 font-bold">
               Back
             </button>
           </Link>
         </div>
-        <div className="max-w-sm rounded overflow-hidden px-5 py-5 m-8 w-1/2 sm:w-auto md:w-full lg:w-32 xl:w-3/4">
+        <div className=" border rounded max-w-sm overflow-hidden p-6 m-8 w-1/2 sm:w-auto md:w-full lg:w-32 xl:w-3/4">
           <p className="text-xxl lowercase font-bold p-4">
             {pokemonData.name.english || pokemonData.name}
           </p>
@@ -54,6 +54,8 @@ function PokemonDetail() {
               <img
                 src={pokemonData.sprites.other.dream_world.front_default}
                 alt="Sprite"
+                className=" w-60 h-40 m-8 "
+                viewBox="0 0 24 24"
               />
             </div>
           )}
@@ -62,7 +64,7 @@ function PokemonDetail() {
               console.log("type:", type);
               return (
                 <div key={index}>
-                  <p className="p-0.5 mt-1 text-xs border text-white mx-4 bg-orange-300 border-none w-20 rounded-full">
+                  <p className="p-0.5 mt-1 text-xs border text-white mx-4 font-extrabold bg-amber-600 border-none w-20 rounded-full">
                     {type.type.name}
                   </p>
                 </div>
@@ -76,7 +78,7 @@ function PokemonDetail() {
                 HP: {pokemonData.stats[0].base_stat}
               </p>
               <div className="relative pt-1">
-                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200">
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-50">
                   <div
                     style={{
                       width: `${calculatePercentage(
@@ -91,14 +93,14 @@ function PokemonDetail() {
                 Attack: {pokemonData.stats[1].base_stat}
               </p>
               <div className="relative pt-1">
-                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200">
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-50">
                   <div
                     style={{
                       width: `${calculatePercentage(
                         pokemonData.stats[1].base_stat
                       )}%`,
                     }}
-                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-400"
                   ></div>
                 </div>
               </div>
@@ -106,14 +108,14 @@ function PokemonDetail() {
                 Defense: {pokemonData.stats[2].base_stat}
               </p>
               <div className="relative pt-1">
-                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200">
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-50">
                   <div
                     style={{
                       width: `${calculatePercentage(
                         pokemonData.stats[2].base_stat
                       )}%`,
                     }}
-                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-cyan-400"
                   ></div>
                 </div>
               </div>
@@ -121,14 +123,14 @@ function PokemonDetail() {
                 Speed: {pokemonData.stats[5].base_stat}
               </p>
               <div className="relative pt-1">
-                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-red-200">
+                <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-50">
                   <div
                     style={{
                       width: `${calculatePercentage(
                         pokemonData.stats[5].base_stat
                       )}%`,
                     }}
-                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                    className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-300"
                   ></div>
                 </div>
               </div>
