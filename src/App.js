@@ -39,6 +39,26 @@ function App() {
     fetchPokemon();
   }, []);
 
+
+  ////////////////////// Highscore fetch start ///////////////////////////////////
+const [score, setScore] = useState([])
+
+useEffect(() => {
+  async function fetchScore() {
+    // Define asynchronous function
+    try {
+      const response = await axios.get("http://localhost:8080/score"); // Make GET request to localhost:8080/score
+      setScore(response.data); // Set state with response data
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  fetchScore(); // Call asynchronous function
+}, []);
+
+////////////////////// Highscore fetch end ///////////////////////////////////
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -49,7 +69,7 @@ function App() {
               path="allpokemon"
               element={<AllPokemon pokemondb={mergedPokemon} />}
             />
-            <Route path="highscore" element={<Highscore />} />
+            <Route path="highscore" element={<Highscore score={score}/>} />
             <Route
               path="pokemon/:pokeId"
               element={<PokemonDetail pokemondb={mergedPokemon} />}
