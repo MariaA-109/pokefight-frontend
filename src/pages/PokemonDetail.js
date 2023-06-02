@@ -33,10 +33,10 @@ function PokemonDetail() {
 
   return (
     <div>
-      <div className="flex justify-center">
+      <div className="flex flex-col  justify-center">
         <div>
           <Link to="../allpokemon/">
-            <button className="bg-rose-500 text-white text-sm p-3 font-bold">
+            <button className="bg-rose-500 rounded-sm text-white text-sm p-3 font-bold">
               Back
             </button>
           </Link>
@@ -57,7 +57,10 @@ function PokemonDetail() {
             console.log("type:", type);
             return (
               <div key={index}>
-                <p className="p-0.5 mt-1 text-xs border text-white mx-4 bg-orange-300 border-none w-20 rounded-full">
+                <p
+                  className="
+               text-base h-6 font-extrabold text-white bg-orange-300 border-none w-20 rounded-full"
+                >
                   {type.type.name}
                 </p>
               </div>
