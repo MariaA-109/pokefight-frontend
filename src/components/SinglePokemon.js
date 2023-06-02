@@ -34,7 +34,7 @@ export default function SinglePokemon({ pokemondb }) {
     <div>
       <Link to={`../pokemon/${pokemonData.id}`}>
         <div
-          className="flex flex-col justify-center m-3 border h-5/6 p-3 rounded-md w-52  "
+          className="flex flex-col justify-center m-8 border h-5/6 p-3 rounded-md w-52  "
           key={pokemonData.id}
         >
           {pokemonData.sprites && (
@@ -57,7 +57,7 @@ export default function SinglePokemon({ pokemondb }) {
             <div className="flex  m-4 justify-around ">
               {pokemonData.types.map((type, index) => (
                 <div key={index}>
-                  <p className="mt-2 text-xs font-extrabold text-white mx-0.5 bg-orange-300 border-none w-20 rounded-full">
+                  <p className="mt-2 text-xs font-extrabold text-white mx-0.5 bg-yellow-600 border-none w-20 rounded-full">
                     {type.type.name}
                   </p>
                 </div>
