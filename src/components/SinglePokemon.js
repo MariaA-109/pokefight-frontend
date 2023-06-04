@@ -31,10 +31,10 @@ export default function SinglePokemon({ pokemondb }) {
   console.log("Page: SinglePokemon:", pokemonData);
 
   return (
-    <div>
+    <div className="border flex w-full justify-center rounded-md ">
       <Link to={`../pokemon/${pokemonData.id}`}>
         <div
-          className="flex flex-col justify-center m-8 border h-5/6 p-3 rounded-md w-52  "
+          className="flex flex-col p-6 m-8 justify-center h-5/6 rounded-md w-52  "
           key={pokemonData.id}
         >
           {pokemonData.sprites && (
@@ -45,7 +45,7 @@ export default function SinglePokemon({ pokemondb }) {
                   placeholderImageUrl
                 }
                 alt={pokemonData.name.english}
-                className="w-32 h-28 m-8 "
+                className="w-68 h-48 m-2"
                 viewBox="0 0 24 24"
               />
             </div>
