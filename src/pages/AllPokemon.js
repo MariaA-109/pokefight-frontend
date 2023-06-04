@@ -50,14 +50,14 @@ export default function AllPokemon({ pokemondb }) {
     );
 
     return (
-      <div>
+      <div className="p-4 m-4">
         <Search
           inputValue={inputValue}
           onInputChange={handleInputChange}
           onSearch={handleSearch}
         />
 
-        <div className="grid grid-cols-1 align-middle sm:grid-cols-2 md:grid-cols-3 mx-1 my-1">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2  md:grid-cols-3 ">
           {currentItems.length > 0 ? (
             currentItems.map((pokemondb) => (
               <SinglePokemon pokemondb={pokemondb} key={pokemondb.id} />

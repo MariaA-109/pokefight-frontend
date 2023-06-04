@@ -16,7 +16,9 @@ function App() {
   useEffect(() => {
     async function fetchPokemon() {
       try {
-        const localResponse = await axios.get("http://localhost:8080/pokemon");
+        const localResponse = await axios.get(
+          "https://poke-fight-backend-qq42.onrender.com/pokemon"
+        );
         const localPokemonData = localResponse.data;
         setLocalPokemon(localPokemonData);
 
@@ -39,25 +41,25 @@ function App() {
     fetchPokemon();
   }, []);
 
-
   ////////////////////// Highscore fetch start ///////////////////////////////////
-const [score, setScore] = useState([])
+  const [score, setScore] = useState([]);
 
-useEffect(() => {
-  async function fetchScore() {
-    // Define asynchronous function
-    try {
-      const response = await axios.get("http://localhost:8080/score"); // Make GET request to localhost:8080/score
-      setScore(response.data); // Set state with response data
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    async function fetchScore() {
+      // Define asynchronous function
+      try {
+        const response = await axios.get(
+          "https://poke-fight-backend-qq42.onrender.com/score"
+        ); // Make GET request to localhost:8080/score
+        setScore(response.data); // Set state with response data
+      } catch (error) {
+        console.error(error);
+      }
     }
-  }
-  fetchScore(); // Call asynchronous function
-}, []);
+    fetchScore(); // Call asynchronous function
+  }, []);
 
-////////////////////// Highscore fetch end ///////////////////////////////////
-
+  ////////////////////// Highscore fetch end ///////////////////////////////////
 
   return (
     <div className="App">
@@ -69,7 +71,7 @@ useEffect(() => {
               path="allpokemon"
               element={<AllPokemon pokemondb={mergedPokemon} />}
             />
-            <Route path="highscore" element={<Highscore score={score}/>} />
+            <Route path="highscore" element={<Highscore score={score} />} />
             <Route
               path="pokemon/:pokeId"
               element={<PokemonDetail pokemondb={mergedPokemon} />}
