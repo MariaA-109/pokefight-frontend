@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { UilStar } from "@iconscout/react-unicons";
@@ -8,6 +8,7 @@ function PokemonDetail() {
   const { pokeId } = useParams();
   const [pokemonData, setPokemonData] = useState(null);
   const [data, setData] = useState("");
+  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -136,21 +137,29 @@ function PokemonDetail() {
             </div>
           </div>
           <div className="flex flex-col self-center">
-            <button
-              className="self-center"
-              onClick={() =>
-                setData(
-                  "I choose you, " +
-                    (pokemonData.name.english || pokemonData.name) +
-                    "!"
-                )
-              }
+            <Link
+              to={{
+                pathname: "/arena",
+                state: { pokemonData: pokemonData },
+              }}
             >
-              <UilStar
-                size={50}
-                className="text-white cursor-pointer transition ease-out hover:scale-125"
-              />
-            </button>
+              {" "}
+              <button
+                className="self-center"
+                onClick={() =>
+                  setData(
+                    "I choose you, " +
+                      (pokemonData.name.english || pokemonData.name) +
+                      "!"
+                  )
+                }
+              >
+                <UilStar
+                  size={50}
+                  className="text-white cursor-pointer transition ease-out hover:scale-125"
+                />
+              </button>
+            </Link>
             <p className="flex-row justify-items-center text-xl m-4">{data}</p>
           </div>
         </div>
