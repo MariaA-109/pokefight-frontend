@@ -136,7 +136,8 @@ function PokemonDetail() {
             </div>
           </div>
           <div className="flex flex-col self-center">
-            <button
+            <Link to="/arena" className=""><button   
+
               className="self-center"
               onClick={() =>
                 setData(
@@ -147,10 +148,11 @@ function PokemonDetail() {
               }
             >
               <UilStar
+              
                 size={50}
                 className="text-white cursor-pointer transition ease-out hover:scale-125"
               />
-            </button>
+            </button></Link>
             <p className="flex-row justify-items-center text-xl m-4">{data}</p>
           </div>
         </div>
