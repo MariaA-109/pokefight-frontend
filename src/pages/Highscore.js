@@ -50,9 +50,11 @@ export default function Highscore({ score }) {
       )}
       <br></br>
       <div className="grid grid-cols-2">
+
         <Link to="../allpokemon/" className="flex ml-1 mx-1 my-1">
           <button className="bg-rose-500 rounded-sm text-white text-lg h-18 w-40 font-bold justify-center">
             Choose another Pokemon
+
           </button>
         </Link>
       </div>
