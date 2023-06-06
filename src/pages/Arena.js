@@ -9,7 +9,7 @@ import "../css/arena.css";
 export default function Arena() {
   const location = useLocation();
   const { chosenPokemon } = location.state;
-  console.log("from: " + chosenPokemon);
+  // console.log("chosenPokemon: " + chosenPokemon);
   const [randomPokemon, setRandomPokemon] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -61,8 +61,80 @@ export default function Arena() {
       }}
       className="w-screen pt-8 justify-center grid grid-cols-1  md:grid-cols-3 md:pt-10"
     >
-      <div className=" bg-slate-50/50 rounded-md m-10">
-        <h2 className="font-bold text-black">Pokemon aus Pokedetail</h2>
+      <div className="bg-slate-50/50 rounded-md p-8 m-8 ml-8 flex-col justify-center">
+        <div className="justify-center ">
+          <p className="font-bold text-black">{chosenPokemon.name}</p>
+          <img
+            className="mx-auto "
+            viewBox="0 0 24 24"
+            src={imageUrlChosen}
+            alt=""
+          />
+
+          <div className="mt-8 pt-8">
+            <p className="text-lg font-bold text-black">Base Stats</p>
+            <p className="text-base m-2 font-bold text-black">
+              HP: {chosenPokemon.stats[0].base_stat}
+            </p>
+            <div className="relative pt-1 ">
+              <div className="overflow-hidden h-4 mb-4 text-xs flex rounded-full bg-gray-50">
+                <div
+                  style={{
+                    width: `${calculatePercentage(
+                      chosenPokemon.stats[0].base_stat
+                    )}%`,
+                  }}
+                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                ></div>
+              </div>
+            </div>
+            <p className="text-base m-1 font-bold text-black">
+              Attack: {chosenPokemon.stats[1].base_stat}
+            </p>
+            <div className="relative pt-1">
+              <div className="overflow-hidden h-4 mb-4 text-xs flex rounded-full bg-gray-50">
+                <div
+                  style={{
+                    width: `${calculatePercentage(
+                      chosenPokemon.stats[1].base_stat
+                    )}%`,
+                  }}
+                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-400"
+                ></div>
+              </div>
+            </div>
+            <p className="text-base m-1 font-bold text-black">
+              Defense: {chosenPokemon.stats[2].base_stat}
+            </p>
+            <div className="relative pt-1">
+              <div className="overflow-hidden h-4 mb-4 text-xs flex rounded-full bg-gray-50">
+                <div
+                  style={{
+                    width: `${calculatePercentage(
+                      chosenPokemon.stats[2].base_stat
+                    )}%`,
+                  }}
+                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-cyan-400"
+                ></div>
+              </div>
+            </div>
+            <p className="text-base m-1 font-bold text-black">
+              Speed: {chosenPokemon.stats[5].base_stat}
+            </p>
+            <div className="relative pt-1">
+              <div className="overflow-hidden h-4 mb-4 text-xs flex rounded-full bg-gray-50">
+                <div
+                  style={{
+                    width: `${calculatePercentage(
+                      chosenPokemon.stats[5].base_stat
+                    )}%`,
+                  }}
+                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-300"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="self-center">
         <h3 className="font-extrabold text-xxl"> VS </h3>
@@ -79,7 +151,7 @@ export default function Arena() {
           <img
             className="mx-auto "
             viewBox="0 0 24 24"
-            src={randomPokemon.sprites.other.dream_world.front_default}
+            src={imageUrlRandom}
             alt=""
           />
 
