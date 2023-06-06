@@ -47,6 +47,7 @@ function App() {
         const response = await axios.get(
           "https://poke-fight-backend-qq42.onrender.com/score"
         ); // Make GET request to localhost:8080/score
+        console.log(response.data)
         setScore(response.data); // Set state with response data
       } catch (error) {
         console.error(error);
