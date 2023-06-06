@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import background from "../img/pokemon-arena.png";
 import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import img1 from "../img/blitz.png";
 import "../css/arena.css";
 
@@ -57,9 +58,8 @@ export default function Arena() {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        height: "100vh",
       }}
-      className="w-screen pt-8 justify-center grid grid-cols-1  md:grid-cols-3 md:pt-10"
+      className="w-screen pt-8 justify-center grid grid-cols-1  md:grid-cols-3 md:pt-10 md:h-screen"
     >
       <div className="bg-slate-50/50 rounded-md p-8 m-8 ml-8 flex-col justify-center">
         <div className="justify-center ">
@@ -136,14 +136,16 @@ export default function Arena() {
           </div>
         </div>
       </div>
-      <div className="self-center">
+      <div className="flex flex-col self-center">
         <h3 className="font-extrabold text-xxl"> VS </h3>
-        <button
-          className=" m-16 rounded-md bg-gradient-to-r from-red-500 to-red-400 p-3 self-center border-b-4 border-red-600 hover:border-red-700 cursor-pointer transition ease-out hover:scale-125"
-          onClick={[]}
-        >
+        <button className=" m-16 font-bold rounded-md bg-gradient-to-r from-red-500 to-red-400 p-3 self-center border-b-4 border-red-600 hover:border-red-700 cursor-pointer transition ease-out hover:scale-125">
           FIGHT
         </button>
+        <Link to="../highscore/">
+          <button className="m-16 font-bold text-lg rounded-md bg-gradient-to-r from-red-500 to-red-400 p-3 border-b-4 border-red-600 hover:border-red-700 cursor-pointer transition ease-out hover:scale-125">
+            HIGHSCORE
+          </button>
+        </Link>
       </div>
       <div className="bg-slate-50/50 rounded-md p-8 m-8 ml-8 flex-col justify-center">
         <div className="justify-center ">
