@@ -2,11 +2,16 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import background from "../img/pokemon-arena.png";
+import { useLocation } from "react-router-dom";
+import img1 from "../img/blitz.png";
+import "../css/arena.css";
 
 export default function Arena() {
-  const { pokeId } = useParams();
-  const [pokeData, setPokemonData] = useState(null);
+  const location = useLocation();
+  const { chosenPokemon } = location.state;
+  // console.log("chosenPokemon: " + chosenPokemon);
   const [randomPokemon, setRandomPokemon] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // API-Daten abrufen
   useEffect(() => {
@@ -17,24 +22,33 @@ export default function Arena() {
           `https://pokeapi.co/api/v2/pokemon/${randomId}`
         );
         setRandomPokemon(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.log("Fehler bei der Datenabfrage", error);
+        setIsLoading(false);
       }
     };
 
     fetchAPI();
   }, []);
 
-  if (!randomPokemon) {
+  if (isLoading || !randomPokemon) {
     // Ladezustand anzeigen oder null zurückgeben, solange die Daten geladen werden
-    return null;
+    return <div>Loading...</div>;
   }
 
-  console.log("randomPokemon", randomPokemon);
+  // console.log("randomPokemon", randomPokemon);
 
   const calculatePercentage = (stat) => {
     return (stat / 100) * 100;
   };
+
+  const imageUrlRandom =
+    randomPokemon.sprites?.other?.dream_world?.front_default ||
+    "https://via.placeholder.com/150";
+  const imageUrlChosen =
+    chosenPokemon.sprites?.other?.dream_world?.front_default ||
+    "https://via.placeholder.com/150";
 
   return (
     <div
@@ -47,8 +61,80 @@ export default function Arena() {
       }}
       className="w-screen pt-8 justify-center grid grid-cols-1  md:grid-cols-3 md:pt-10"
     >
-      <div className=" bg-slate-50/50 rounded-md m-10">
-        <h2 className="font-bold text-black">Pokemon aus Pokedetail</h2>
+      <div className="bg-slate-50/50 rounded-md p-8 m-8 ml-8 flex-col justify-center">
+        <div className="justify-center ">
+          <p className="font-bold text-black">{chosenPokemon.name}</p>
+          <img
+            className="mx-auto "
+            viewBox="0 0 24 24"
+            src={imageUrlChosen}
+            alt=""
+          />
+
+          <div className="mt-8 pt-8">
+            <p className="text-lg font-bold text-black">Base Stats</p>
+            <p className="text-base m-2 font-bold text-black">
+              HP: {chosenPokemon.stats[0].base_stat}
+            </p>
+            <div className="relative pt-1 ">
+              <div className="overflow-hidden h-4 mb-4 text-xs flex rounded-full bg-gray-50">
+                <div
+                  style={{
+                    width: `${calculatePercentage(
+                      chosenPokemon.stats[0].base_stat
+                    )}%`,
+                  }}
+                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
+                ></div>
+              </div>
+            </div>
+            <p className="text-base m-1 font-bold text-black">
+              Attack: {chosenPokemon.stats[1].base_stat}
+            </p>
+            <div className="relative pt-1">
+              <div className="overflow-hidden h-4 mb-4 text-xs flex rounded-full bg-gray-50">
+                <div
+                  style={{
+                    width: `${calculatePercentage(
+                      chosenPokemon.stats[1].base_stat
+                    )}%`,
+                  }}
+                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-yellow-400"
+                ></div>
+              </div>
+            </div>
+            <p className="text-base m-1 font-bold text-black">
+              Defense: {chosenPokemon.stats[2].base_stat}
+            </p>
+            <div className="relative pt-1">
+              <div className="overflow-hidden h-4 mb-4 text-xs flex rounded-full bg-gray-50">
+                <div
+                  style={{
+                    width: `${calculatePercentage(
+                      chosenPokemon.stats[2].base_stat
+                    )}%`,
+                  }}
+                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-cyan-400"
+                ></div>
+              </div>
+            </div>
+            <p className="text-base m-1 font-bold text-black">
+              Speed: {chosenPokemon.stats[5].base_stat}
+            </p>
+            <div className="relative pt-1">
+              <div className="overflow-hidden h-4 mb-4 text-xs flex rounded-full bg-gray-50">
+                <div
+                  style={{
+                    width: `${calculatePercentage(
+                      chosenPokemon.stats[5].base_stat
+                    )}%`,
+                  }}
+                  className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-300"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="self-center">
         <h3 className="font-extrabold text-xxl"> VS </h3>
@@ -65,7 +151,7 @@ export default function Arena() {
           <img
             className="mx-auto "
             viewBox="0 0 24 24"
-            src={randomPokemon.sprites.other.dream_world.front_default}
+            src={imageUrlRandom}
             alt=""
           />
 
@@ -138,85 +224,3 @@ export default function Arena() {
     </div>
   );
 }
-
-//pullen!
-// usestae über prop onclik pokemon mit ID auswählt
-// zufällig mathrandom API
-// button für highscor
-// fight vorbei highscore seite
-// fight schere stein papier (feuer vs wasser Wasser>Feuer) --> attack gegen defense verrechnen!
-// bei fight hover der pokemon
-
-//Aufgabe: ich möchte die Pokemon mit id-ausgewählt vom User bei pokemon 1 anzeigen lassen
-
-// import React, { useEffect, useState } from "react";
-// import { Link, useParams } from "react-router-dom";
-
-// import img1 from "../img/blitz.png";
-// import "../css/arena.css";
-//import { screen } from "@testing-library/react";
-
-// //pullen!
-// // usestae über prop onclik pokemon mit ID auswählt
-// // zufällig mathrandom API
-// // button für highscor
-// // fight vorbei highscore seite
-// // fight schere stein papier (feuer vs wasser Wasser>Feuer) --> attack gegen defense verrechnen!
-// // bei fight hover der pokemon
-
-// //Aufgabe: ich möchte die Pokemon mit id-ausgewählt vom User bei pokemon 1 anzeigen lassen
-
-// export default function Arena() {
-//   // const {pokeId} = useParams();
-//   // const [pokeData, setPokemonData] = useState([null]);
-
-//   // useEffect(() => {
-//   //   const fetchAPI = async () => {
-//   //     try {
-//   //       const response = await axios.get(
-//   //         `https://pokeapi.co/api/v2/pokemon/${pokeId}`
-//   //       );
-//   //         setPokemonData(response.data);
-//   //         } catch (error) {
-//   //           console.log ("Error fetch", error);
-//   //     }
-//   //   };
-
-//   //   fetchAPI();
-//   // }, [pokeId]);
-
-//   // if (!pokeData) {
-//   //   // Add a loading state or return null while the data is loading
-//   //   return null;
-//   // }
-
-//   // console.log("pokemonData", pokemonData);
-
-//   return (
-//     <div>
-//       <div className="wrapper">
-//         <h2>Arena</h2>
-//          <div className="pk-flex">
-//             <div>Name Pokemon 1</div>
-//             <div>Name Pokemon 2</div>
-//          </div>
-//             <div className="main-Flex">
-
-//               <div className="cardLeft"></div>
-//               {/* <div><Pokemon /></div> */}
-
-//               <div className="vs">
-//                 <h3> V S </h3>
-//                 <img className="blitz" src={img1} alt="Pokemon Blitz" />
-//               </div>
-
-//               <div className="cardRight"></div>
-//               {/* <p>Pokemon count: {pokeApiResponse.count}</p> */}
-//               {/* <div><Pokemon /></div> */}
-
-//             </div>
-//           <div> <button conClick={[ ]} className="fight-button"> Fight</button> </div>
-//       </div>
-//     </div>
-//   );
-// }

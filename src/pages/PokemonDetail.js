@@ -29,7 +29,7 @@ function PokemonDetail() {
     return null;
   }
 
-  console.log("pokemonData", pokemonData);
+  // console.log("pokemonData", pokemonData);
 
   const calculatePercentage = (stat) => {
     return (stat / 100) * 100;
@@ -60,7 +60,7 @@ function PokemonDetail() {
           )}
           <div className="flex flex-row flex-wrap my-1.5 justify-around items-center p-2">
             {pokemonData.types.map((type, index) => {
-              console.log("type:", type);
+              // console.log("type:", type);
               return (
                 <div key={index}>
                   <p className="p-0.5 mt-1 text-base border text-white mx-4 font-extrabold bg-amber-600 border-none w-40 h-8 rounded-full">
@@ -71,7 +71,7 @@ function PokemonDetail() {
             })}
           </div>
         </div>
-        <div class="flex flex-col self-center w-2/4">
+        <div className="flex flex-col self-center w-2/4">
           <div className="my-1.5 p-8z m-8 ">
             <p className="text-lg font-bold ">Base Stats</p>
             <p className="text-base m-2">
@@ -136,9 +136,9 @@ function PokemonDetail() {
             </div>
           </div>
           <div className="flex flex-col self-center">
-            <Link to="/arena" className="">
+            <Link to="/arena" state={{ chosenPokemon: pokemonData }}>
               <button
-                className="self-center transition delay-150 duration-300 ease-in-out"
+                className="self-center"
                 onClick={() =>
                   setData(
                     "I choose you, " +
@@ -148,7 +148,7 @@ function PokemonDetail() {
                 }
               >
                 <UilStar
-                  size={90}
+                  size={50}
                   className="text-white cursor-pointer transition ease-out hover:scale-125"
                 />
               </button>
@@ -162,5 +162,3 @@ function PokemonDetail() {
 }
 
 export default PokemonDetail;
-
-// border rounded max-w-sm overflow-hidden p-6 m-8 w-1/2 sm:w-auto md:w-full lg:w-32 xl:w-3/4
