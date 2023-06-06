@@ -9,8 +9,8 @@ import Highscore from "./pages/Highscore";
 import Arena from "./pages/Arena";
 
 function App() {
-  const [localPokemon, setLocalPokemon] = useState([]);
-  const [pokeApiPokemon, setPokeApiPokemon] = useState([]);
+  // const [localPokemon, setLocalPokemon] = useState([]);
+  // const [pokeApiPokemon, setPokeApiPokemon] = useState([]);
   const [mergedPokemon, setMergedPokemon] = useState([]);
 
   useEffect(() => {
@@ -20,13 +20,13 @@ function App() {
           "https://poke-fight-backend-qq42.onrender.com/pokemon"
         );
         const localPokemonData = localResponse.data;
-        setLocalPokemon(localPokemonData);
+        // setLocalPokemon(localPokemonData);
 
         const pokeApiResponse = await axios.get(
           "https://pokeapi.co/api/v2/pokemon/"
         );
         const pokeApiPokemonData = pokeApiResponse.data.results;
-        setPokeApiPokemon(pokeApiPokemonData);
+        // setPokeApiPokemon(pokeApiPokemonData);
 
         const mergedPokemonData = localPokemonData.map((local, index) => ({
           ...local,

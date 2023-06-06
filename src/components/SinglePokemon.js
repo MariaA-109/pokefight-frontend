@@ -28,7 +28,7 @@ export default function SinglePokemon({ pokemondb }) {
     return null;
   }
 
-  console.log("Page: SinglePokemon:", pokemonData);
+  // console.log("Page: SinglePokemon:", pokemonData);
 
   return (
     <div className="border flex w-full justify-center rounded-md ">

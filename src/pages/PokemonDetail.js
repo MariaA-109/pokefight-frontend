@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { UilStar } from "@iconscout/react-unicons";
@@ -8,7 +8,6 @@ function PokemonDetail() {
   const { pokeId } = useParams();
   const [pokemonData, setPokemonData] = useState(null);
   const [data, setData] = useState("");
-  const location = useLocation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +29,7 @@ function PokemonDetail() {
     return null;
   }
 
-  console.log("pokemonData", pokemonData);
+  // console.log("pokemonData", pokemonData);
 
   const calculatePercentage = (stat) => {
     return (stat / 100) * 100;
@@ -61,7 +60,7 @@ function PokemonDetail() {
           )}
           <div className="flex flex-row flex-wrap my-1.5 justify-around items-center p-2">
             {pokemonData.types.map((type, index) => {
-              console.log("type:", type);
+              // console.log("type:", type);
               return (
                 <div key={index}>
                   <p className="p-0.5 mt-1 text-base border text-white mx-4 font-extrabold bg-amber-600 border-none w-40 h-8 rounded-full">
@@ -72,7 +71,7 @@ function PokemonDetail() {
             })}
           </div>
         </div>
-        <div class="flex flex-col self-center w-2/4">
+        <div className="flex flex-col self-center w-2/4">
           <div className="my-1.5 p-8z m-8 ">
             <p className="text-lg font-bold ">Base Stats</p>
             <p className="text-base m-2">
@@ -137,13 +136,7 @@ function PokemonDetail() {
             </div>
           </div>
           <div className="flex flex-col self-center">
-            <Link
-              to={{
-                pathname: "/arena",
-                state: { pokemonData: pokemonData },
-              }}
-            >
-              {" "}
+            <Link to="/arena" state={{ pokemonData: pokemonData }}>
               <button
                 className="self-center"
                 onClick={() =>
@@ -169,5 +162,3 @@ function PokemonDetail() {
 }
 
 export default PokemonDetail;
-
-// border rounded max-w-sm overflow-hidden p-6 m-8 w-1/2 sm:w-auto md:w-full lg:w-32 xl:w-3/4
