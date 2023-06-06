@@ -136,23 +136,23 @@ function PokemonDetail() {
             </div>
           </div>
           <div className="flex flex-col self-center">
-            <Link to="/arena" className=""><button   
-
-              className="self-center"
-              onClick={() =>
-                setData(
-                  "I choose you, " +
-                    (pokemonData.name.english || pokemonData.name) +
-                    "!"
-                )
-              }
-            >
-              <UilStar
-              
-                size={50}
-                className="text-white cursor-pointer transition ease-out hover:scale-125"
-              />
-            </button></Link>
+            <Link to="/arena" className="">
+              <button
+                className="self-center transition delay-150 duration-300 ease-in-out"
+                onClick={() =>
+                  setData(
+                    "I choose you, " +
+                      (pokemonData.name.english || pokemonData.name) +
+                      "!"
+                  )
+                }
+              >
+                <UilStar
+                  size={90}
+                  className="text-white cursor-pointer transition ease-out hover:scale-125"
+                />
+              </button>
+            </Link>
             <p className="flex-row justify-items-center text-xl m-4">{data}</p>
           </div>
         </div>
