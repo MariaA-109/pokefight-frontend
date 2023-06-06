@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+
 import background from "../img/pokemon-arena.png";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import img1 from "../img/blitz.png";
+
 import "../css/arena.css";
 
 export default function Arena() {
