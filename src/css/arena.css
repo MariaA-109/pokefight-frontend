@@ -1,59 +1,56 @@
-
-
 .wrapper {
-    /* min-width: 100px;
+  /* min-width: 100px;
     min-height: 100px; */
-  }
-
-.h2{
-    font-size: 4rem;
-  }
-  
-  .blitz{
-    width: 200px;
-    height: 200px;
-    /* visibility: hidden; */
-  }
-
-.pk_flex{
-    display: flex;
-    justify-content: space-between;
 }
 
-.vs{
-    padding: 110px;
+.h2 {
+  font-size: 4rem;
 }
 
-.main_Flex{
-    display: flex;
-    flex-direction: row;
+.blitz {
+  width: 200px;
+  height: 200px;
+  /* visibility: hidden; */
 }
 
-.cardLeft{
-    width: 400px;
-    height: 600px;
-    border: solid rgb(255, 255, 255);
-    border-radius: 30px;
+.pk_flex {
+  display: flex;
+  justify-content: space-between;
 }
 
-.cardRight{
-    width: 400px;
-    height: 600px;
-    border: solid red;
-    border-radius: 30px;
+.vs {
+  padding: 110px;
 }
 
-.rightPokePic{
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 250px;
-    height: 250px;
+.main_Flex {
+  display: flex;
+  flex-direction: row;
 }
 
-.fight_button{
-    border: solid black;
-    padding: 10px 20px;
+.cardLeft {
+  width: 400px;
+  height: 600px;
+  border: solid rgb(255, 255, 255);
+  border-radius: 30px;
 }
 
+.cardRight {
+  width: 400px;
+  height: 600px;
+  border: solid red;
+  border-radius: 30px;
+}
+
+.rightPokePic {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+}
+
+.fight_button {
+  border: solid black;
+  padding: 10px 20px;
+}
