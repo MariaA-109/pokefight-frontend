@@ -6,8 +6,8 @@ import "../css/arena.css";
 
 export default function Arena() {
   const location = useLocation();
-  const { pokemonData } = location.state;
-  console.log("from: " + pokemonData);
+  const { chosenPokemon } = location.state;
+  console.log("from: " + chosenPokemon);
   const [randomPokemon, setRandomPokemon] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -41,7 +41,7 @@ export default function Arena() {
     randomPokemon.sprites?.other?.dream_world?.front_default ||
     "https://via.placeholder.com/150";
   const imageUrlChosen =
-    pokemonData.sprites?.other?.dream_world?.front_default ||
+    chosenPokemon.sprites?.other?.dream_world?.front_default ||
     "https://via.placeholder.com/150";
 
   return (
@@ -54,11 +54,11 @@ export default function Arena() {
         </div>
         <div className="main_Flex">
           <div className="cardLeft"></div>
-          <p>{pokemonData.name}</p>
+          <p>{chosenPokemon.name}</p>
           <img
             className="rightPokePic"
             src={imageUrlChosen}
-            alt={pokemonData.name}
+            alt={chosenPokemon.name}
           />
           <div className="vs">
             <h3> V S </h3>

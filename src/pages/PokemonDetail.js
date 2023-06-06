@@ -136,7 +136,7 @@ function PokemonDetail() {
             </div>
           </div>
           <div className="flex flex-col self-center">
-            <Link to="/arena" state={{ pokemonData: pokemonData }}>
+            <Link to="/arena" state={{ chosenPokemon: pokemonData }}>
               <button
                 className="self-center"
                 onClick={() =>
